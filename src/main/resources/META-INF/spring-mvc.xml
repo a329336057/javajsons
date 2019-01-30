@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+    <!-- 使用注解方式完成映射 -->
+    <!-- 让扫描spring扫描这个包下所有的类，让标注spring注解的类生效 -->
+    <context:component-scan base-package="com.ssh"/>
+    <mvc:annotation-driven/><!-- 开启注解 -->
+
+    <!-- 视图解析器 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="views/" />      <!-- 前缀 -->
+        <property name="suffix" value=".jsp" />   <!-- 后缀 -->
+    </bean>
+    <!--这里是对静态资源的映射-->
+    <mvc:resources mapping="/js/**" location="/resources/js/" />
+    <mvc:resources mapping="/css/**" location="/resources/css/" />
+    <mvc:resources mapping="/img/**" location="/resources/img/" />
+</beans>
