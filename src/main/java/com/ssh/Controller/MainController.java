@@ -1,5 +1,6 @@
 package com.ssh.Controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.ssh.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ public class MainController {
         System.out.print("sadadada");
 //        实际返回的是views/test.jsp ,spring-mvc.xml中配置过前后缀
         return "test";
+
     }
 
 
