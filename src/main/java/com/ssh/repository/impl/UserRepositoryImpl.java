@@ -27,60 +27,12 @@ public class UserRepositoryImpl implements UserRepository {
 
 
     @Override
-    public User load(String id) {
-        return null;
-    }
-
-    @Override
-    public User get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<User> findAll() {
-        return null;
-    }
-
-    @Override
-    public void persist(User entity) {
-
-    }
-
-    @Override
-    public String save(User entity) {
-        return null;
-    }
-
-    @Override
-    public void saveOrUpdate(User entity) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public String login(HashMap map) {
+    public Query login(HashMap map) {
         String g="";
-       String username= (String) map.get("username");
+        String username= (String) map.get("username");
         String password= (String) map.get("password");
         String sql="SELECT * FROM user WHERE user_name='"+username+"' AND user_pass='"+password+"'";
         Query query= getCurrentSession().createSQLQuery(sql).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-        List<HashMap<String,Object>> list=query.list();
-         HashMap<String,Object> maps =new HashMap<String, Object>();
-
-        for(HashMap<String,Object> mapd :list){
-            for(Object value:mapd.values()){
-              g=mapd.values().toString();
-            }
-         }
-        return  g;
+        return query;
     }
 }

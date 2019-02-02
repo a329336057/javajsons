@@ -5,6 +5,7 @@ import com.ssh.service.PersonService;
 import com.ssh.entity.Person;
 import com.ssh.repository.PersonRepository;
 import com.ssh.service.PersonService;
+import net.sf.json.JSONObject;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,5 @@ public class PersonServiceImpl implements PersonService {
 
     }
 
-    @Override
-    public void hg() {
 
-    }
 }

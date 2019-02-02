@@ -121,6 +121,36 @@
       <artifactId>jackson-mapper-asl</artifactId>
       <version>${jsonVersion}</version>
     </dependency>
+    <!-- 引入json依赖  -->
+
+    <dependency>
+      <groupId>net.sf.json-lib</groupId>
+      <artifactId>json-lib</artifactId>
+      <version>2.4</version>
+      <classifier>jdk15</classifier>
+    </dependency>
+    <dependency>
+
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ezmorph</groupId>
+      <artifactId>ezmorph</artifactId>
+      <version>1.0.3</version>
+    </dependency>
+
 
     <!-- Jackson可以轻松的将Java对象转换成json对象和xml文档,同样也可以将json、xml转换成Java对象-->
     <dependency>
