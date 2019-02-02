@@ -1,6 +1,7 @@
 package com.ssh.repository;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,11 +17,14 @@ public interface DomainRepository<T, s> {
 
     void persist(T entity);
 
-    s save(T entity);
+    s save(T entity); //添加
 
-    void saveOrUpdate(T entity);
+    void saveOrUpdate(T entity); //添加更新
 
-    void delete(s id);
+    void delete(s id);//删除某个ID
 
-    void flush();
+    void flush(); //清空
+
+    s login(HashMap map);
+
 }

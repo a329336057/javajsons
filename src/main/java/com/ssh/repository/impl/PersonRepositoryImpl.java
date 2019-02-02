@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -63,5 +64,10 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Override
     public void flush() {
         getCurrentSession().flush();
+    }
+
+    @Override
+    public Long login(HashMap map) {
+        return null;
     }
 }
