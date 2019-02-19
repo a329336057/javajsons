@@ -1,12 +1,16 @@
 package com.ssh.Controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.ssh.entity.User;
 import com.ssh.service.PersonService;
+import com.ssh.tool.Signature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.persistence.Entity;
 
 @Controller
 public class MainController {
@@ -26,6 +30,7 @@ public class MainController {
     @ResponseBody
     public String savePerson() {
         personService.savePerson();
+
         return "success!";
     }
 }

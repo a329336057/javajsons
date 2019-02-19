@@ -25,6 +25,8 @@ import java.util.Map;
  */
 @Service
 public class UserServiceImpl implements LoginService {
+
+
     LoginLastCase loginLastCase;
     @Autowired(required = true)
     private UserRepository userRepository; //调用封装好的dao层方法
@@ -32,39 +34,49 @@ public class UserServiceImpl implements LoginService {
     List<HashMap<String,Object>> list;
     HashMap<String,Object> hashMap;
     @Override
-    public String Userlogin(HashMap map) {
+    public JSONObject Userlogin(HashMap map) {
         Query query =userRepository.login(map);
-
         list=query.list();
-
         if(list.size()==0){
             loginLastCase=LoginLastCase.shibai;
         }else {
             if(list.size()>1){
                loginLastCase=LoginLastCase.yichang;
-
             }else{
-
                 loginLastCase=LoginLastCase.chenggong;
-
             }
         }
-
-
          return  loginjson(loginLastCase,list);
     }
 
-    private String loginjson(LoginLastCase last,List<HashMap<String,Object>> map1) {
+    @Override
+    public JSONObject Register(HashMap map) {
+        Query query =userRepository.zhuce(map);
         JSONObject jsonObject = new JSONObject();
+        list=query.list();
+        if(list.size()==0){
+        userRepository.adduser(map);
+
+            jsonObject.put("message", "注册成功 ");
+            jsonObject.put("Code", 200);
+        }else {
+            userRepository.xiugai(map);
+            jsonObject.put("message", "注册失败 ");
+            jsonObject.put("Code", 302);
+
+        }
+        return  jsonObject;
+    }
 
 
 
+    private JSONObject loginjson(LoginLastCase last,List<HashMap<String,Object>> map1) {
+        JSONObject jsonObject = new JSONObject();
         switch (last) {
-
             case shibai:
                 jsonObject.put("message", "登陆失败 请确认您的账号或密码");
                 jsonObject.put("Code", 302);
-                jsonObject.put("reslut", "");
+                jsonObject.put("reslut", null);
                 break;
             case chenggong:
                 jsonObject.put("message", "登陆成功");
@@ -81,7 +93,7 @@ public class UserServiceImpl implements LoginService {
             case yichang:
                 jsonObject.put("message", "账号异常");
                 jsonObject.put("Code", 303);
-                jsonObject.put("reslut", "");
+                jsonObject.put("reslut", null);
                 break;
 
 //                for (HashMap map1 : l) {
@@ -97,7 +109,7 @@ public class UserServiceImpl implements LoginService {
 
 
         }
-        return jsonObject.toString();
+        return jsonObject;
     }
 
 

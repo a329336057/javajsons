@@ -1,11 +1,13 @@
 package com.ssh.service;
 
 import com.ssh.entity.User;
+import net.sf.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public interface LoginService {
+public interface LoginService{
 
-    String Userlogin(HashMap map);
+    JSONObject Userlogin(HashMap map);
+    JSONObject Register(HashMap map);
 }

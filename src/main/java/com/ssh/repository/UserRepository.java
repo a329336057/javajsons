@@ -14,5 +14,8 @@ import java.util.Map;
  */
 public interface UserRepository  {
    Query login(HashMap map);
+   void adduser(HashMap map);
+   Query zhuce(HashMap map);
+   void xiugai(HashMap map);
 }
 
