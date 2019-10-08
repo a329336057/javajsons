@@ -1,7 +1,7 @@
 package com.ssh.Controller;
 
 import com.ssh.entity.User;
-import com.ssh.service.impl.UserServiceImpl;
+
 import com.ssh.tool.Signature;
 import com.sun.deploy.net.HttpResponse;
 import net.sf.json.JSONObject;
@@ -37,8 +37,7 @@ public class Login {
 
 
 
-    @Autowired
-    UserServiceImpl userService;
+
 
     @RequestMapping(value = "l",method = RequestMethod.GET)
     public   @ResponseBody  JSONObject denglu(@RequestParam String username, @RequestParam String password,HttpServletRequest httpRequest, HttpServletResponse httpResponse ) throws IOException {
@@ -48,7 +47,7 @@ public class Login {
         map.put("username",name);
         map.put("password",pass);
         String ht= httpRequest.getHeader("apikey");
-        JSONObject id=userService.Userlogin(map);
+        JSONObject id=null;
         System.out.print(Signature.sign(username,"1")+ht);
 
         return id;
@@ -69,7 +68,7 @@ public class Login {
         map.put("nickname",nickname);
         map.put("emall",emall);
         map.put("password",password);
-        JSONObject jsonObject=  userService.Register(map);
+        JSONObject jsonObject= null;
         return jsonObject;
 
 
